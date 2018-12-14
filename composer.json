@@ -1,0 +1,24 @@
+{
+  "name": "mocean/symfony-mocean-bundle",
+  "description": "Mocean API for Symfony Framework",
+  "type": "library",
+  "keywords": [
+    "sms",
+    "verify",
+    "symfony",
+    "framework",
+    "mocean"
+  ],
+  "license": "MIT",
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "require": {
+    "symfony/framework-bundle": "^3.0.0|^4.0.0",
+    "mocean/client": "1.*"
+  },
+  "autoload": {
+    "psr-4": {
+      "MoceanSymBundle\\": "src/"
+    }
+  }
+}

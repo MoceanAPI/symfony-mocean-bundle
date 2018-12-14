@@ -1,0 +1,5 @@
+services:
+  mocean_manager:
+    class: MoceanSymBundle\Services\MoceanManager
+    public: true
+    arguments: ['%mocean.defaults%', '%mocean.accounts%']
