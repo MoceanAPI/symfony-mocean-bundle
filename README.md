@@ -61,6 +61,14 @@ services:
       $mocean: '@mocean_manager'
 ```
 
+Using autowiring
+```yaml
+# config/services.yaml
+
+services:
+  MoceanSymBundle\Services\MoceanManager: '@mocean_manager'
+```
+
 In controller
 
 ```php
