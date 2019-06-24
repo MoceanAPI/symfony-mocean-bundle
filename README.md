@@ -1,6 +1,7 @@
 Symfony Mocean
 ===============
 [![Latest Stable Version](https://img.shields.io/packagist/v/mocean/symfony-mocean-bundle.svg)](https://packagist.org/packages/mocean/symfony-mocean-bundle)
+[![Build Status](https://img.shields.io/travis/com/MoceanAPI/symfony-mocean-bundle.svg)](https://travis-ci.com/MoceanAPI/symfony-mocean-bundle)
 [![License](https://img.shields.io/packagist/l/mocean/symfony-mocean-bundle.svg)](https://packagist.org/packages/mocean/symfony-mocean-bundle)
 [![Total Downloads](https://img.shields.io/packagist/dt/mocean/symfony-mocean-bundle.svg)](https://packagist.org/packages/mocean/symfony-mocean-bundle)
 
