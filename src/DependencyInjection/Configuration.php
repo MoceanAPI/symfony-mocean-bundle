@@ -32,7 +32,6 @@ class Configuration implements ConfigurationInterface
                         ->children()
                             ->scalarNode('api_key')->defaultValue('xxxxxxx')->end()
                             ->scalarNode('api_secret')->defaultValue('xxxxxx')->end()
-                            ->scalarNode('from')->defaultValue('xxxxxx')->end()
                         ->end()
                     ->end()
                 ->end()

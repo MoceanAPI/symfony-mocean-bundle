@@ -12,39 +12,19 @@ namespace MoceanSymBundle\Services;
 use Mocean\Client;
 use Mocean\Client\Credentials\Basic;
 
+/**
+ * @mixin Client
+ */
 class MoceanClient
 {
     private $mocean;
-    private $from;
 
     /**
      * MoceanClient constructor.
      */
-    public function __construct($api_key, $api_secret, $from)
+    public function __construct($api_key, $api_secret)
     {
         $this->mocean = new Client(new Basic($api_key, $api_secret));
-        $this->from = $from;
-    }
-
-    /**
-     * @param $to
-     * @param $text
-     * @param array $params
-     *
-     * @link http://moceanapi.com/docs/#send-sms Documentation
-     *
-     * @return string
-     * @throws Client\Exception\Exception
-     */
-    public function message($to, $text, array $params = [])
-    {
-        $params['mocean-to'] = $to;
-        $params['mocean-text'] = $text;
-        $params['mocean-resp-format'] = 'json';
-        if (!isset($params['mocean-from'])) {
-            $params['mocean-from'] = $this->from;
-        }
-        return $this->mocean->message()->send($params);
     }
 
     /**
@@ -53,6 +33,15 @@ class MoceanClient
      */
     public function getMocean()
     {
-        return $this->mocean;
+        if ($this->mocean) {
+            return $this->mocean;
+        }
+
+        return $this->mocean = new Client(new Basic($this->apiKey, $this->apiSecret));
+    }
+
+    public function __call($method, $arguments)
+    {
+        return call_user_func_array([$this->getMocean(), $method], $arguments);
     }
 }

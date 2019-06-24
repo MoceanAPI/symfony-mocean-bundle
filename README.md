@@ -1,5 +1,9 @@
 Symfony Mocean
 ===============
+[![Latest Stable Version](https://img.shields.io/packagist/v/mocean/symfony-mocean-bundle.svg)](https://packagist.org/packages/mocean/symfony-mocean-bundle)
+[![License](https://img.shields.io/packagist/l/mocean/symfony-mocean-bundle.svg)](https://packagist.org/packages/mocean/symfony-mocean-bundle)
+[![Total Downloads](https://img.shields.io/packagist/dt/mocean/symfony-mocean-bundle.svg)](https://packagist.org/packages/mocean/symfony-mocean-bundle)
+
 Symfony Mocean API Integration
 
 ## Installation
@@ -17,11 +21,9 @@ mocean:
     main:
       api_key: mainAccountApiKey
       api_secret: mainAccountApiSecret
-      from: David
     secondary:
       api_key: secondaryAccountApiKey
       api_secret: secondaryAccountApiSecret
-      from: John
 ```
 
 ### Symfony 4
@@ -68,7 +70,11 @@ class YourController extends AbstractController
      */
     public function index(MoceanSymBundle\Services\MoceanManager $mocean)
     {
-        $res = $mocean->message('60123456789', 'Simple Text');
+        $res = $mocean->message()->send([
+            'mocean-to' => '60123456789',
+            'mocean-from' => 'MOCEAN',
+            'mocean-text' => 'Hello World'
+        ]);
     }
 }
 ```
@@ -83,7 +89,7 @@ class YourController extends Controller
     public function index()
     {
         $mocean = $this->container->get('mocean_manager');
-        $res = $mocean->message('60123456789', 'Simple Text');
+        $res = $mocean->message()->send(...);
     }
 }
 ```
@@ -92,14 +98,8 @@ The above example will be using the account define in defaults.
 If you have multiple account defined in config, you can use like this
 
 ```php
-$mocean->using('secondary')->message('60123456789', 'Simple Text');
-$mocean->using('third')->message('60123456789', 'Simple Text');
-```
-
-Get the configured [Mocean SDK](https://github.com/MoceanAPI/mocean-sdk-php) Object
-```php
-$sdk = $mocean->getMocean();
-$accBalance = $sdk->account()->getBalance(['mocean-resp-format' => 'JSON']);
+$mocean->using('secondary')->message()->send(...);
+$mocean->using('third')->message()->send(...);
 ```
 
 ## License

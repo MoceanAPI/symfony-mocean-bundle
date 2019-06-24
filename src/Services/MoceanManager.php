@@ -8,6 +8,12 @@
 
 namespace MoceanSymBundle\Services;
 
+use InvalidArgumentException;
+use Mocean\Client\Credentials\Basic;
+
+/**
+ * @mixin MoceanClient
+ */
 class MoceanManager
 {
     /**
@@ -33,11 +39,30 @@ class MoceanManager
      */
     public function using($account)
     {
-        if (!isset($this->accounts[$account])) {
-            throw new \InvalidArgumentException("Account \"$account\" is not configured.");
+        if (is_array($account)) {
+            $settings = $account;
+        } elseif ($account instanceof Basic) {
+            $settings = [
+                'api_key' => $account['mocean-api-key'],
+                'api_secret' => $account['mocean-api-secret'],
+            ];
+        } else {
+            if (!isset($this->accounts[$account])) {
+                throw new \InvalidArgumentException("Account \"$account\" is not configured.");
+            }
+
+            $settings = $this->accounts[$account];
         }
-        $settings = $this->accounts[$account];
-        return new MoceanClient($settings['api_key'], $settings['api_secret'], $settings['from']);
+
+        if (!isset($settings['api_key']) || $settings['api_key'] === '') {
+            throw new InvalidArgumentException('api_key is not configured');
+        }
+
+        if (!isset($settings['api_secret']) || $settings['api_secret'] === '') {
+            throw new InvalidArgumentException('api_secret is not configured');
+        }
+
+        return new MoceanClient($settings['api_key'], $settings['api_secret']);
     }
 
     /**
