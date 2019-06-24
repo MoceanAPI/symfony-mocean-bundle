@@ -21,9 +21,9 @@ class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder()
     {
-        $treeBuilder = new TreeBuilder('mocean');
+        $treeBuilder = new TreeBuilder();
 
-        $treeBuilder->getRootNode()
+        $treeBuilder->root('mocean')
             ->children()
                 ->scalarNode('defaults')->defaultValue('main')->end()
                 ->arrayNode('accounts')
