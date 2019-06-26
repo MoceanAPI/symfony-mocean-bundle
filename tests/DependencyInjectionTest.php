@@ -8,7 +8,6 @@
 
 namespace MoceanSymBundle\Tests;
 
-
 use MoceanSymBundle\DependencyInjection\MoceanExtension;
 use MoceanSymBundle\Services\MoceanManager;
 

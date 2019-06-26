@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: Neoson Lam
  * Date: 12/14/2018
- * Time: 10:28 AM
+ * Time: 10:28 AM.
  */
 
 namespace MoceanSymBundle\DependencyInjection;
@@ -13,7 +13,6 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
 
 class Configuration implements ConfigurationInterface
 {
-
     /**
      * Generates the configuration tree builder.
      *
