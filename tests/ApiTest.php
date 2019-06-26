@@ -60,7 +60,7 @@ class ApiTest extends AbstractTesting
     {
         $mocean = $this->containerBuilder->get('mocean_manager');
         $crendentials = [
-            'api_key' => 'test_array_key',
+            'api_key'    => 'test_array_key',
             'api_secret' => 'test_array_secret',
         ];
 

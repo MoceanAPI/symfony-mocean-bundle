@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: Neoson Lam
  * Date: 12/14/2018
- * Time: 10:21 AM
+ * Time: 10:21 AM.
  */
 
 namespace MoceanSymBundle;

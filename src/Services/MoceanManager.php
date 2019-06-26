@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: Neoson Lam
  * Date: 12/14/2018
- * Time: 12:06 PM
+ * Time: 12:06 PM.
  */
 
 namespace MoceanSymBundle\Services;
@@ -32,9 +32,10 @@ class MoceanManager
     }
 
     /**
-     * abilitity to switch account defined in config
+     * abilitity to switch account defined in config.
      *
      * @param $account
+     *
      * @return MoceanClient
      */
     public function using($account)
@@ -43,7 +44,7 @@ class MoceanManager
             $settings = $account;
         } elseif ($account instanceof Basic) {
             $settings = [
-                'api_key' => $account['mocean-api-key'],
+                'api_key'    => $account['mocean-api-key'],
                 'api_secret' => $account['mocean-api-secret'],
             ];
         } else {
@@ -66,7 +67,8 @@ class MoceanManager
     }
 
     /**
-     * this will be called to use default connections
+     * this will be called to use default connections.
+     *
      * @return MoceanClient
      */
     public function defaultConnection()
@@ -76,7 +78,7 @@ class MoceanManager
 
     /**
      * @param string $method
-     * @param array $arguments
+     * @param array  $arguments
      *
      * @return mixed
      */

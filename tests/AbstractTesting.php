@@ -8,10 +8,7 @@
 
 namespace MoceanSymBundle\Tests;
 
-
-use MoceanSymBundle\DependencyInjection\MoceanExtension;
 use PHPUnit\Framework\TestCase;
-use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Yaml\Parser;
 
@@ -27,7 +24,7 @@ class AbstractTesting extends TestCase
 
     protected function getEmptyConfig()
     {
-        $yaml = <<<EOF
+        $yaml = <<<'EOF'
 defaults: main
 accounts:
   main:
@@ -35,6 +32,7 @@ accounts:
     api_secret: test_api_secret
 EOF;
         $parser = new Parser();
+
         return $parser->parse($yaml);
     }
 
